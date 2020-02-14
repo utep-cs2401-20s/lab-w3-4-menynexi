@@ -14,6 +14,7 @@ class TorusGameOfLife extends GameOfLife{
        super(arr);
     }
 
+    //this method muust be used because -1%3 should == 2 but it is negative so add the size to counter act this so do (-1 + 5)%5 == 1
     @Override
     public int neighbor(int row, int colums){
         int count = 0;
@@ -26,7 +27,7 @@ class TorusGameOfLife extends GameOfLife{
         if(super.prevBoard[((row + 1) + size)% size][((colums) + size)% size] == 1){
             count++;
         }
-        if(super.prevBoard[((row + 1) + size)% size][((colums) + size)% size] == 1){
+        if(super.prevBoard[((row - 1) + size)% size][((colums) + size)% size] == 1){
             count++;
         }
         if(super.prevBoard[((row + 1) + size)% size][((colums + 1) + size)% size] == 1){
@@ -36,9 +37,6 @@ class TorusGameOfLife extends GameOfLife{
             count++;
         }
         if(super.prevBoard[((row + 1) + size)% size][((colums - 1) + size)% size] == 1){
-            count++;
-        }
-        if(super.prevBoard[((row - 1) + size)% size][((colums + 1) + size)% size] == 1){
             count++;
         }
         if(super.prevBoard[((row - 1) + size)% size][((colums + 1) + size)% size] == 1){
