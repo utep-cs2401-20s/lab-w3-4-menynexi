@@ -182,6 +182,9 @@ public class GameOfLife {
 
     //does what step does but multiple times
     public void evolution(int n){
+        if(0 > n){
+            n = n * -1;
+        }
         int countOfevolutions = 0;
         while(countOfevolutions < n){
             oneStep();
@@ -190,7 +193,6 @@ public class GameOfLife {
     }
     
     public void printarr(){
-        System.out.println("hi");
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
                 System.out.print(this.currBoard[i][j] + " ");

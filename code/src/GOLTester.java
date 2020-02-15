@@ -140,6 +140,166 @@ class GOLTesting{
         assertEquals( 2, case1.neighbor(2,2));
     }
 
+    @Test
+    public void GOLTesting8() {
+        int[][] arr = {
+                {0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0},
+                {0, 0, 1, 1, 1, 0},
+                {0, 1, 1, 1, 0, 0},
+                {0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0}
+        };
+        GameOfLife case1 = new GameOfLife(arr);
+        assertEquals(4, case1.neighbor(2,2));
+    }
+
+    @Test
+    public void GOLTesting9(){
+        int[][] arr = {
+                {0,0,0,0,0,0},
+                {0,0,0,0,0,0},
+                {0,0,1,1,1,0},
+                {0,1,1,1,0,0},
+                {0,0,0,0,0,0},
+                {0,0,0,0,0,0}
+        };
+        int[][] expectedArr = {
+                {0,0,0,0,0,0},
+                {0,0,0,1,0,0},
+                {0,1,0,0,1,0},
+                {0,1,0,0,1,0},
+                {0,0,1,0,0,0},
+                {0,0,0,0,0,0}
+        };
+        int[][] expectedArr2 = {
+                {0,0,0,0,0,0},
+                {0,0,0,1,0,0},
+                {0,1,0,0,1,0},
+                {0,1,0,0,1,0},
+                {0,0,1,0,0,0},
+                {0,0,0,0,0,0}
+        };
+        GameOfLife case1 = new GameOfLife(arr);
+        case1.oneStep();
+        assertEquals( expectedArr, case1.getcurrBoard());
+        assertEquals( expectedArr2, case1.getcurrBoard());//I wanted to see if this was possible
+    }
+
+    @Test//this test case passed but it froze my computer and took 156 ms which is odd compared to other actions
+    public void GOLTesting10() {
+        int[][] arr = {
+                {0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0},
+                {0, 0, 1, 1, 1, 0},
+                {0, 1, 1, 1, 0, 0},
+                {0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0}
+        };
+        GameOfLife case1 = new GameOfLife(arr);
+        case1.oneStep();
+        assertEquals(arr, case1.getPrevBoard());
+    }
+
+    @Test
+    public void GOLTesting11() {
+        int[][] arr = {
+                {0, 0, 0, 0, 0, 0},
+                {0, 1, 1, 0, 0, 0},
+                {0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 1, 1, 0},
+                {0, 0, 0, 1, 1, 0},
+                {0, 0, 0, 0, 0, 0}
+        };
+        GameOfLife case1 = new GameOfLife(arr);
+        case1.oneStep();
+        assertEquals(arr, case1.getPrevBoard());
+    }
+
+    @Test//cant take in rectangles
+    public void GOLTesting12() {
+        int[][] arr = {
+                {0, 0, 0, 0, 0, 0},
+                {0, 1, 1, 0, 0, 0},
+                {0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 1, 1, 0},
+                {0, 0, 0, 1, 1, 0},
+                {0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0}
+        };
+        GameOfLife case1 = new GameOfLife(arr);
+        case1.oneStep();
+        assertEquals(arr, case1.getPrevBoard());
+    }
+
+    @Test//if you where to devide the rows and the colums based on different input the it would support different sized input
+    public void GOLTesting13(){
+        int[][] arr = {
+                {0, 0, 0, 0, 0, 0},
+                {0, 1, 1, 0, 0, 0},
+                {0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 1, 1, 0},
+                {0, 0, 0, 1, 1, 0},
+                {0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0},
+                {0, 1, 1, 0, 0, 0},
+                {0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 1, 1, 0},
+                {0, 0, 0, 1, 1, 0},
+                {0, 0, 0, 0, 0, 0}
+        };
+
+        int[][] expectedArr = {
+                {0,0,0,0,0,0},
+                {0,0,0,1,0,0},
+                {0,1,0,0,1,0},
+                {0,1,0,0,1,0},
+                {0,0,1,0,0,0},
+                {0,0,0,0,0,0},
+                {0,0,0,0,0,0},
+                {0,0,0,1,0,0},
+                {0,1,0,0,1,0},
+                {0,1,0,0,1,0},
+                {0,0,1,0,0,0},
+                {0,0,0,0,0,0}
+        };
+        GameOfLife case1 = new GameOfLife(arr);
+        case1.oneStep();
+        assertEquals(expectedArr, case1.getcurrBoard());
+    }
+
+    @Test
+    public void GOLTesting14() {
+        int[][] arr = {
+                {0, 0, 0, 0, 0, 0},
+                {0, 1, 1, 0, 0, 0},
+                {0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 1, 1, 0},
+                {0, 0, 0, 1, 1, 0},
+                {0, 0, 0, 0, 0, 0}
+        };
+        GameOfLife case1 = new GameOfLife(arr);
+        case1.oneStep();
+        assertEquals(arr, case1.getPrevBoard());
+    }
+
+    @Test
+    public void GOLTesting15() {
+        int[][] arr = {
+                {0, 0, 0, 0, 0, 0},
+                {0, 1, 1, 0, 0, 0},
+                {0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 1, 1, 0},
+                {0, 0, 0, 1, 1, 0},
+                {0, 0, 0, 0, 0, 0}
+        };
+        GameOfLife case1 = new GameOfLife(arr);
+        case1.evolution(-1);
+        assertEquals(arr, case1.getPrevBoard());
+    }
+
+
+
     //testing neighbors using torus
     @Test
     public void GOLTesting16(){
@@ -207,6 +367,231 @@ class GOLTesting{
         assertEquals( 6, case1.neighbor(0,0));
     }
 
+
+    //checking evolving
+    @Test
+    public void GOLTesting21(){
+        int[][] arr = {
+                {1,1,0,0,1},
+                {1,1,0,0,0},
+                {0,0,0,0,0},
+                {0,0,0,0,0},
+                {1,0,0,0,1}
+        };
+        GameOfLife case1 = new TorusGameOfLife(arr);
+        assertEquals( 6, case1.neighbor(0,0));
+    }
+
+    @Test
+    public void GOLTesting22() {
+        int[][] arr = {
+                {0, 0, 0, 0, 0, 0},
+                {0, 1, 1, 0, 0, 0},
+                {0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 1, 1, 0},
+                {0, 0, 0, 1, 1, 0},
+                {0, 0, 0, 0, 0, 0}
+        };
+        TorusGameOfLife case1 = new TorusGameOfLife(arr);
+        case1.oneStep();
+        assertEquals(arr, case1.getPrevBoard());
+    }
+
+    @Test//cheack a bigger board just to see if it can support a 10 x 10
+    public void GOLTesting23() {
+        int[][] arr = {
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+        };
+        TorusGameOfLife case1 = new TorusGameOfLife(arr);
+        case1.oneStep();
+        assertEquals(arr, case1.getPrevBoard());
+    }
+
+    @Test //because science
+    public void GOLTesting24() {
+        int[][] arr = {
+                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+                {0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+        };
+
+        int[][] expectedArr = {
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0},
+                {1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1},
+                {0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+                {0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0}
+        };
+
+        TorusGameOfLife case1 = new TorusGameOfLife(arr);
+        case1.oneStep();
+        case1.printarr();
+        assertEquals(expectedArr, case1.getcurrBoard());
+    }
+
+    @Test
+    public void GOLTesting25() {
+        int[][] arr = {
+                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+                {0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+        };
+
+        TorusGameOfLife case1 = new TorusGameOfLife(arr);
+        case1.oneStep();
+        case1.printarr();
+        assertEquals(arr, case1.prevBoard);
+    }
+
+    @Test
+    public void GOLTesting26() {
+        int[][] arr = {
+                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+                {0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+        };
+
+        int[][] expectedArr = {
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0},
+                {1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1},
+                {0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+                {0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0}
+        };
+
+        TorusGameOfLife case1 = new TorusGameOfLife(arr);
+        case1.evolution( -1);
+        case1.printarr();
+        assertEquals(expectedArr, case1.getcurrBoard());
+    }
+
+    @Test
+    public void GOLTesting27() {
+        int[][] arr = {
+                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+                {0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+        };
+
+        int[][] expectedArr = {
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0},
+                {1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1},
+                {0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+                {0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0}
+        };
+
+        TorusGameOfLife case1 = new TorusGameOfLife(arr);
+        case1.evolution( 1);
+        case1.printarr();
+        assertEquals(expectedArr, case1.getcurrBoard());
+    }
+
+    @Test
+    public void GOLTesting28() {
+        int[][] arr = {
+                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+                {0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+        };
+
+        int[][] expectedArr = {
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0},
+                {1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1},
+                {0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+                {0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0}
+        };
+
+        TorusGameOfLife case1 = new TorusGameOfLife(arr);
+        case1.printarr();
+        case1.oneStep(); // you cant use case.oneStep(),oneStep();
+        assertEquals(expectedArr, case1.getcurrBoard());
+    }
 
 
 
